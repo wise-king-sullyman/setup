@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ $os_flavor = "ubuntu"]]; then
+if [[ $os_flavor = "ubuntu" ]]; then
   sudo apt install curl
 fi
 
