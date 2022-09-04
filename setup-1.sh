@@ -1,7 +1,7 @@
 #!/bin/bash
 
 source get-os-flavor.sh
-os_flavor=get_os
+os_flavor=$(get_os)
 
 source vars.sh
 
