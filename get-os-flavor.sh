@@ -13,7 +13,7 @@ get_os () {
     ;;
     
     *"Ubuntu"*)
-      echo fedora
+      echo ubuntu
     ;;
 
     *)
