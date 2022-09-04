@@ -13,3 +13,4 @@ source install-nvm.sh
 
 source install-node.sh
 
+source install-ruby-1.sh
