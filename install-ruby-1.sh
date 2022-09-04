@@ -1,10 +1,10 @@
 #!/bin/bash
 
-if [[ $os_flavor = "ubuntu"]]; then
+if [[ $os_flavor = "ubuntu" ]]; then
   sudo apt update
   sudo apt upgrade
   sudo apt install gcc make libssl-dev libreadline-dev zlib1g-dev libsqlite3-dev
-elif [[ $os_flavor = "fedora"]]; then
+elif [[ $os_flavor = "fedora" ]]; then
   sudo dnf update
   sudo dnf upgrade
   sudo dnf install git-core zlib zlib-devel gcc-c++ patch readline readline-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison curl sqlite-devel
