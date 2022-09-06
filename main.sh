@@ -27,7 +27,6 @@ if [[ $install_rails != "y" ]]; then
   read -p "install yarn? y/n " install_yarn
 fi
 
-
 # perform installs
 
 if [[ $configure_git = "y" ]]; then
@@ -50,13 +49,6 @@ fi
 if [[ $install_rbenv = "y" ]] && [[ $install_ruby != "y" ]] && [[ $install_rails != "y" ]]; then
     source install-ruby-1.sh
 fi
-
-if [[ $install_rbenv = "y" ]] && [[ $install_ruby != "y" ]] && [[ $install_rails != "y" ]]; then
-    source install-ruby-1.sh
-if [[ $install_rbenv = "y" ]] && [[ $install_ruby != "y" ]] && [[ $install_rails != "y" ]]; then
-    source install-ruby-1.sh
-fi
-
 
 if [[ $install_ruby = "y" ]] && [[ $install_rails != "y" ]]; then
     source install-ruby-1.sh
