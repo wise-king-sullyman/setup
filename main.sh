@@ -13,14 +13,13 @@ read -p "setup SSH key? y/n " setup_ssh_key
 
 read -p "install node? (also installs NVM) y/n " install_node
 
-
 read -p "install rails? (also installs ruby, env, and yarn) y/n " install_rails
 
 if [[ $install_rails != "y" ]]; then
   read -p "install ruby? (also installs rbenv) y/n " install_ruby
 fi
 
-if [[ $install_ruby != "y" ]]; then
+if [[ $install_ruby != "y" ]] && [[ $install_rails != "y" ]]; then
   read -p "install rbenv? y/n " install_rbenv
 fi
 
