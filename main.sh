@@ -48,17 +48,20 @@ fi
 
 if [[ $install_rbenv = "y" ]] && [[ $install_ruby != "y" ]] && [[ $install_rails != "y" ]]; then
     source prepare-install-rbenv.sh
-    echo "open a new terminal and run ./install-rbenv.sh"
+    source $profile_file
+    source install-rbenv.sh
 fi
 
 if [[ $install_ruby = "y" ]] && [[ $install_rails != "y" ]]; then
     source prepare-install-rbenv.sh
-    echo "open a new terminal and run ./finish-ruby-installation.sh"
+    source $profile_file
+    source finish-ruby-installation.sh
 fi
 
 if [[ $install_rails = "y" ]]; then
     source prepare-install-rbenv.sh
-    echo "open a new terminal and run ./finish-rails-installation.sh"
+    source $profile_file
+    source finish-rails-installation.sh
 fi
 
 if [[ $install_yarn = "y" ]]; then
