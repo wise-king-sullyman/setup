@@ -5,7 +5,9 @@ os_flavor=$(get_os)
 
 source vars.sh
 
-source install-ruby-2.sh
+source install-rbenv.sh
+
+source install-ruby.sh
 
 source install-rails.sh
 
