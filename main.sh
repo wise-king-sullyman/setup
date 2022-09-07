@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -i
 
 source get-os-flavor.sh
 os_flavor=$(get_os)
