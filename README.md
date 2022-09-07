@@ -1,7 +1,6 @@
-To use:
+To use enter the following commands then follow on screen prompts:
 
 ```bash
-cd setup
-chmod 755 main.sh
+git clone https://github.com/wise-king-sullyman/setup.git
 ./main.sh
 ```
