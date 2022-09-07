@@ -67,3 +67,5 @@ fi
 if [[ $install_yarn = "y" ]]; then
     source install-yarn.sh
 fi
+
+echo "Installations complete"
