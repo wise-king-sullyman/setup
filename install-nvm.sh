@@ -11,4 +11,4 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 command -v nvm
 
-read -p "NVM installed, press enter to continue"
+read -p "NVM is installed if 'nvm' was returned on the previous line, press enter to continue"
