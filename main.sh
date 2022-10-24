@@ -27,6 +27,14 @@ if [[ $install_rails != "y" ]]; then
   read -p "install yarn? y/n " install_yarn
 fi
 
+if [[ $email = "user@example.com" ]] && [[ $configure_git = "y" ]] || [[ $setup_ssh_key = "y" ]]; then
+  read -p "Enter email to use for Git. Note: this email will be visible on all commits to public repos " email
+fi
+
+if [[ $username = "User" ]] && [[ $configure_git]]; then
+  read -p "Enter username to use for Git. Note: this will also be visible on all commits to public repos " username
+fi
+
 # perform installs
 
 if [[ $configure_git = "y" ]]; then
