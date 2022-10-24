@@ -7,13 +7,22 @@ source vars.sh
 
 # get user desired config
 
-read -p "configure git? y/n " configure_git
+read -p "install all? y/n " install_all
 
-read -p "setup SSH key? y/n " setup_ssh_key
+if [[ $install_all = "y" ]]; then
+  configure_git="y"
+  setup_ssh_key="y"
+  install_node="y"
+  install_rails="y"
+else
+  read -p "configure git? y/n " configure_git
 
-read -p "install node? (also installs NVM) y/n " install_node
+  read -p "setup SSH key? y/n " setup_ssh_key
 
-read -p "install rails? (also installs ruby, env, and yarn) y/n " install_rails
+  read -p "install node? (also installs NVM) y/n " install_node
+
+  read -p "install rails? (also installs ruby, env, and yarn) y/n " install_rails
+fi
 
 if [[ $install_rails != "y" ]]; then
   read -p "install ruby? (also installs rbenv) y/n " install_ruby
