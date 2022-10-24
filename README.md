@@ -1,7 +1,5 @@
-To use enter the following commands then follow on screen prompts:
+To use enter the following command then follow on screen prompts:
 
 ```bash
-git clone https://github.com/wise-king-sullyman/setup.git
-cd setup
-./main.sh
+curl -o- https://raw.githubusercontent.com/wise-king-sullyman/install.sh | bash
 ```
