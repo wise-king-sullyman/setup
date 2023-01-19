@@ -21,26 +21,35 @@ export NVM_DIR="$HOME/.nvm"
 export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 export PUPPETEER_EXECUTABLE_PATH=`which chromium`
 
-alias gitPurgeBranches='git branch --merged | egrep -v "(^\*|master|main|dev)" | xargs git branch -d'
-alias gs='git status'
+alias gaa='git add .'
 alias gb='git switch'
-alias gmb='git switch -c'
-alias gf='git fetch upstream'
 alias gc='git commit'
+alias gf='git fetch upstream'
+alias gitPurgeBranches='git branch --merged | egrep -v "(^\*|master|main|dev)" | xargs git branch -d'
+alias gmb='git switch -c'
 alias gp='git push'
 alias gpl='git pull'
 alias gpo='git push -u origin'
-alias grum='git rebase upstream/main'
 alias gra='git remote add'
 alias grv='git remote -v'
-alias yt='yarn test'
-alias ys='yarn start'
+alias grum='git rebase upstream/main'
+alias gs='git status'
+alias gsp='git stash pop'
+alias gst='git stash --include-untracked'
+
+alias ghb='gh browse'
+alias ghpc='gh pr create -fw'
+alias ghps='gh pr status'
+
 alias yb='yarn build'
 alias ybd='yarn build:docs'
+alias ys='yarn start'
 alias ysd='yarn serve:docs'
+alias yt='yarn test'
+
 alias cz='code ~/.zshrc'
-alias sz='source ~/.zshrc'
 alias lza='cat ~/.zshrc | grep alias'
+alias sz='source ~/.zshrc'
 
 autoload -Uz compinit && compinit
 
