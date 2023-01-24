@@ -21,11 +21,25 @@ export NVM_DIR="$HOME/.nvm"
 export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 export PUPPETEER_EXECUTABLE_PATH=`which chromium`
 
+alias cpa='code ~/repos/patternfly-analytics'
+alias cpc='code ~/repos/patternfly'
+alias cpcm='code ~/repos/pf-codemods'
+alias cpced='code ~/repos/pf-extension-docs'
+alias cpd='code ~/repos/pf-docs'
+alias cpes='code ~/repos/patternfly-extension-seed'
+alias cpo='code ~/repos/patternfly-org'
+alias cpq='code ~/repos/patternfly-quickstarts'
+alias cpr='code ~/repos/patternfly-react'
+alias cprs='code ~/repos/patternfly-react-seed'
+alias cz='code ~/.zshrc'
+
 alias gaa='git add .'
 alias gb='git switch'
 alias gc='git commit'
+alias gclean='git stash --include-untracked && git clean -xdf && yarn'
 alias gf='git fetch upstream'
 alias gitPurgeBranches='git branch --merged | egrep -v "(^\*|master|main|dev)" | xargs git branch -d'
+alias gl='git log'
 alias gmb='git switch -c'
 alias gp='git push'
 alias gpl='git pull'
@@ -40,6 +54,7 @@ alias gst='git stash --include-untracked'
 alias ghb='gh browse'
 alias ghpc='gh pr create -fw'
 alias ghps='gh pr status'
+alias ghrsd='gh repo set-default'
 
 alias yb='yarn build'
 alias ybd='yarn build:docs'
@@ -47,8 +62,12 @@ alias ys='yarn start'
 alias ysd='yarn serve:docs'
 alias yt='yarn test'
 
-alias cz='code ~/.zshrc'
 alias lza='cat ~/.zshrc | grep alias'
+alias lzag='lza | grep git'
+alias lzagh='lza | grep gh'
+alias lzac='lza | grep code'
+alias lzay='lza | grep yarn'
+alias lzaz='lza | grep lza || zsh'
 alias sz='source ~/.zshrc'
 
 autoload -Uz compinit && compinit
