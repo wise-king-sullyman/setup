@@ -31,7 +31,8 @@ alias cpo='code ~/repos/patternfly-org'
 alias cpq='code ~/repos/patternfly-quickstarts'
 alias cpr='code ~/repos/patternfly-react'
 alias cprs='code ~/repos/patternfly-react-seed'
-alias cz='code ~/.zshrc'
+alias cs='code ~/repos/setup'
+alias cz='code ~/repos/setup/.zshrc'
 
 alias gaa='git add .'
 alias gb='git switch'
@@ -68,7 +69,7 @@ alias lzagh='lza | grep gh'
 alias lzac='lza | grep code'
 alias lzay='lza | grep yarn'
 alias lzaz='lza | grep lza || zsh'
-alias sz='source ~/.zshrc'
+alias sz='cp ~/repos/setup/.zshrc ~/.zshrc && source ~/.zshrc'
 
 autoload -Uz compinit && compinit
 
