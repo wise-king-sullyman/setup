@@ -57,6 +57,7 @@ alias gst='git stash --include-untracked'
 
 alias ghb='gh browse'
 alias ghpc='gh pr create -fw'
+alias ghpcs='gh pr checkout'
 alias ghps='gh pr status'
 alias ghrsd='gh repo set-default'
 
