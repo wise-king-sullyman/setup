@@ -3,8 +3,7 @@
 #     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 # }
 
-source ./omz-init.sh
-source ./device-specific.sh
+source ~/repos/setup/omz-init.sh
 
 version_pf() {
     if [ "$2" != "" ]
@@ -40,12 +39,6 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Puppeteer setup for pf docs framework testing
-# echo 'export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true' >> ~/.zshrc
-# echo 'export PUPPETEER_EXECUTABLE_PATH=`which chromium`' >> ~/.zshrc
-export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-export PUPPETEER_EXECUTABLE_PATH=`which chromium`
 
 alias cpa='code ~/repos/patternfly-analytics'
 alias cpc='code ~/repos/patternfly'
