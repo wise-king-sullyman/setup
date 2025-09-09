@@ -1,13 +1,39 @@
 # Report the branch when in a directory that's a git repository
-parse_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+# parse_git_branch() {
+#     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+# }
+
+source ./omz-init.sh
+source ./device-specific.sh
+
+version_pf() {
+    if [ "$2" != "" ]
+    then
+        echo -n "$1: "
+        npm view @patternfly/$1 | grep $2
+    else
+        npm view @patternfly/$1
+    fi
+}
+
+version_pf_all() {
+    version_pf patternfly $1
+    version_pf react-charts $1
+    version_pf react-code-editor $1
+    version_pf react-core $1
+    version_pf react-drag-drop $1
+    version_pf react-icons $1
+    version_pf react-styles $1
+    version_pf react-table $1
+    version_pf react-templates $1
+    version_pf react-tokens $1
 }
 
 export NODE_OPTIONS=--max-old-space-size=10000
 
-setopt PROMPT_SUBST
+# setopt PROMPT_SUBST
 
-PROMPT='%F{green}%~%f%F{yellow}$(parse_git_branch) $%f '
+# PROMPT='%F{green}%~%f%F{yellow}$(parse_git_branch) $%f '
 
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin" # This adds `code` to the PATH
 
@@ -40,9 +66,12 @@ alias cz='code ~/repos/setup/.zshrc'
 
 alias gaa='git add .'
 alias gb='git switch'
+alias gbm='git switch main'
+alias gb6='git switch v6'
 alias gc='git commit'
 alias gca='git commit --amend'
 alias gclean='git stash --include-untracked && git clean -xdf && yarn'
+alias gclean--no-save='git clean -xdf && yarn'
 alias gf='git fetch upstream'
 alias gitPurgeBranches='git branch --merged | egrep -v "(^\*|master|main|dev)" | xargs git branch -d'
 alias gl='git log'
@@ -53,8 +82,10 @@ alias gpo='git push -u origin'
 alias gra='git remote add'
 alias grc='git rebase --continue'
 alias grh='git reset --hard'
+alias grhc='git reset --hard && git clean -xdf'
 alias grv='git remote -v'
 alias grum='git rebase upstream/main'
+alias gru5='git rebase upstream/v5'
 alias grab='git rebase --abort'
 alias gs='git status'
 alias gsp='git stash pop'
@@ -62,29 +93,34 @@ alias gst='git stash --include-untracked'
 
 alias ghb='gh browse'
 alias ghpc='gh pr create -fw'
-alias ghpcs='gh pr checkout'
-alias ghpc5='gh pr create -B "v5" -fw'
+alias ghpco='gh pr checkout'
+alias ghpc6='gh pr create -B "v6" -fw'
 alias ghps='gh pr status'
 alias ghrsd='gh repo set-default'
+
+alias nr='npm run'
+alias npmv='npm view'
+
+alias pn='pnpm'
+alias pi='pnpm install'
+alias pr='pnpm run'
 
 alias yb='yarn build'
 alias ybd='yarn build:docs'
 alias yci='git clean -xdf && yarn'
+alias yjw='yarn jest --watch'
 alias ys='yarn start'
 alias ysd='yarn serve:docs'
 alias yt='yarn test'
+alias ytsf='yarn test:v5:single --fix'
 
 alias lza='cat ~/.zshrc | grep alias'
 alias lzag='lza | grep git'
 alias lzagh='lza | grep gh'
 alias lzac='lza | grep code'
+alias lzan='lza | grep npm'
 alias lzay='lza | grep yarn'
 alias lzaz='lza | grep lza || zsh'
 alias sz='cp ~/repos/setup/.zshrc ~/.zshrc && source ~/.zshrc'
 
 autoload -Uz compinit && compinit
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-# DONT PUT THINGS BELOW HERE
