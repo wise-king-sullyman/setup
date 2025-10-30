@@ -3,29 +3,82 @@
 #     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 # }
 
-source ~/repos/setup/omz-init.sh
+source ~/omz-init.sh
+source ~/device-specific.sh
+
+parse_npm_versions() {
+local input
+
+if [ -t 0 ]; then
+    input="$1"
+else
+    input=$(cat)
+fi
+
+echo "$input" | sed -n '/^dist-tags:/,/^$/p' | tail -n +2 | sed 's/^[[:space:]]*/  /'
+}
 
 version_pf() {
-    if [ "$2" != "" ]
+package_name=""
+full_flag=""
+all_flag=""
+prerelease_flag=""
+latest_flag=""
+tag=""
+
+while getopts n:faplt: flag; do
+    case $flag in 
+        n) package_name="${OPTARG}" ;;
+        f) full_flag='true' ;;
+        a) all_flag='true' ;;
+        p) prerelease_flag='true' ;;
+        l) latest_flag='true' ;;
+        t) tag="${OPTARG}" ;;
+  esac
+done
+
+npm_response=$(npm view @patternfly/$package_name)
+
+if [[ -n $full_flag ]];
     then
-        echo -n "$1: "
-        npm view @patternfly/$1 | grep $2
+        echo $npm_response
     else
-        npm view @patternfly/$1
-    fi
+        echo -n "$package_name:\n"
+        versions=$(echo $npm_response | parse_npm_versions)
+        if [[ -n $all_flag ]]
+        then echo $versions
+        elif [[ -n $prerelease_flag ]]
+        then echo $versions | grep "prerelease:"
+        elif [[ -n $latest_flag ]]
+        then echo $versions | grep "latest:"
+        elif [[ -n $tag ]]
+        then echo $versions | grep "$tag:"
+        fi
+fi
 }
 
 version_pf_all() {
-    version_pf patternfly $1
-    version_pf react-charts $1
-    version_pf react-code-editor $1
-    version_pf react-core $1
-    version_pf react-drag-drop $1
-    version_pf react-icons $1
-    version_pf react-styles $1
-    version_pf react-table $1
-    version_pf react-templates $1
-    version_pf react-tokens $1
+    flags='-f'
+
+    while getopts aplt: flag; do
+        case $flag in 
+            a) flags='-a' ;;
+            p) flags='-p' ;;
+            l) flags='-l' ;;
+            t) flags="-t ${OPTARG}" ;;
+        esac
+    done
+
+    version_pf -n patternfly $flags
+    version_pf -n react-charts $flags
+    version_pf -n react-code-editor $flags
+    version_pf -n react-core $flags
+    version_pf -n react-drag-drop $flags
+    version_pf -n react-icons $flags
+    version_pf -n react-styles $flags
+    version_pf -n react-table $flags
+    version_pf -n react-templates $flags
+    version_pf -n react-tokens $flags
 }
 
 export NODE_OPTIONS=--max-old-space-size=10000
