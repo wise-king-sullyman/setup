@@ -112,6 +112,7 @@ alias cz='code ~/repos/setup/.zshrc'
 
 alias gaa='git add .'
 alias gb='git switch'
+alias gblr='git branch --sort=-committerdate'
 alias gbm='git switch main'
 alias gb6='git switch v6'
 alias gc='git commit'
