@@ -168,6 +168,10 @@ alias lzac='lza | grep code'
 alias lzan='lza | grep npm'
 alias lzay='lza | grep yarn'
 alias lzaz='lza | grep lza || zsh'
-alias sz='cp ~/repos/setup/.zshrc ~/.zshrc && source ~/.zshrc'
+alias cpomz='cp ~/repos/setup/omz-init.sh ~'
+alias cpds='cp ~/repos/setup/device-specific.sh ~'
+alias szshrc='cp ~/repos/setup/.zshrc ~/.zshrc && source ~/.zshrc'
+alias sz='cpomz && cpds && szshrc'
+
 
 autoload -Uz compinit && compinit
